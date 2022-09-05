@@ -1,9 +1,9 @@
-const Associado = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     const Associado = sequelize.define(
       'Associado',
       {
         nome: DataTypes.STRING,
-        CPF: DataTypes.STRING,
+        cpf: DataTypes.STRING,
         placa: DataTypes.STRING,
         endereco: DataTypes.STRING,
         telefone: DataTypes.STRING,
@@ -14,5 +14,3 @@ const Associado = (sequelize, DataTypes) => {
     );
     return Associado;
   };
-  
-  module.exports = Associado;
