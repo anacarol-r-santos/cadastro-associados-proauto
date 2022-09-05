@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { verificaToken } = require('../services/auth');
 const { Associado } = require('../models');
 const jwt = require('jsonwebtoken');
 
@@ -13,13 +12,14 @@ const validaToken = async (req, res, next) => {
         }
 
         const decoficacao = jwt.verify(token, process.env.JWT_SECRET);
-        console.log('decod ', decoficacao);
+        console.log('decodificação: ', decoficacao)
 
         const user = await Associado.findOne({ where: { cpf: decoficacao.data.cpf } });
+        console.log('user: ', user)
 
         if (!user) {
             return res.status(401).json({
-                message: 'Erro ao procurar usuário do token.'
+                message: 'Erro ao procurar token do usuário.'
             });
         };
 
