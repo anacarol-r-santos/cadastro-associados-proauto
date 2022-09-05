@@ -21,7 +21,7 @@ const login = async (req, res) => {
           }
 
         const token = criaToken({ data: associado});
-        return res.status(200).json({ token });
+        return res.status(200).json({ token, associado });
     } catch (error) {
         console.log(error.message);
         res.status(500).json({ message: 'Algo deu errado, tente novamente mais tarde.' });
